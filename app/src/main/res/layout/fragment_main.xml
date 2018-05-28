@@ -39,6 +39,7 @@
 
             <!--TextField-->
             <EditText
+                android:id="@+id/edtUser"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Username"
@@ -61,6 +62,7 @@
 
             <!--TextField-->
             <EditText
+                android:id="@+id/edtPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Password"
@@ -70,12 +72,14 @@
 
         <!--Remember-->
         <CheckBox
+            android:id="@+id/chbRemember"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Remembar User And Password" />
+            android:text="Remember User And Password" />
 
         <!--Submit-->
         <Button
+            android:id="@+id/btnSubmit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Submit" />
