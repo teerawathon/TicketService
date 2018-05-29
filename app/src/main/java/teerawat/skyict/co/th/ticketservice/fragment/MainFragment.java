@@ -1,6 +1,8 @@
 package teerawat.skyict.co.th.ticketservice.fragment;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -14,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -32,6 +35,9 @@ public class MainFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+//        Check SharePrefer
+        checkSharePrefer();
+
 //        Create Toolbar
         createToolbar();
 
@@ -40,6 +46,22 @@ public class MainFragment extends Fragment {
 
 
     } //Main Medthod
+
+    private void checkSharePrefer() {
+        try {
+            SharedPreferences sharedPreferences = getActivity()
+                    .getSharedPreferences("SkyUser", Context.MODE_PRIVATE);
+            String idString = sharedPreferences.getString("id", "");
+            String nameString = sharedPreferences.getString("name", "");
+
+            if (idString.length() != 0) {
+                intentToService(nameString, idString);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     private void submitController() {
         Button button = getView().findViewById(R.id.btnSubmit);
@@ -67,7 +89,7 @@ public class MainFragment extends Fragment {
                         boolean userBool = true;
                         String truePasswordString = null, nameString = null, idString = null;
 
-                        String urlJSON = "http://androidthai.in.th/gate/getAllUserWat.php";
+                        String urlJSON = "https://android.skyict.co.th/getAllUserWat.php";
                         ReadAllData readAllData = new ReadAllData(getActivity());
                         readAllData.execute(urlJSON);
                         MyAlertDialog myAlertDialog = new MyAlertDialog(getActivity());
@@ -100,6 +122,14 @@ public class MainFragment extends Fragment {
                             Toast.makeText(getActivity(),"Welcome "+nameString,
                                     Toast.LENGTH_SHORT).show();
 
+//                            Check Remember
+                            CheckBox checkBox = getView().findViewById(R.id.chbRemember);
+                            if (checkBox.isChecked()) {
+
+                                saveIdAndName(idString, nameString);
+
+                            }
+
 //                            Intent to Service Activity
                             intentToService(nameString, idString);
 
@@ -119,6 +149,17 @@ public class MainFragment extends Fragment {
 
             } // onClick
         });
+
+    }
+
+    private void saveIdAndName(String idString, String nameString) {
+
+        SharedPreferences sharedPreferences = getActivity()
+                .getSharedPreferences("SkyUser", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("id", idString);
+        editor.putString("name", nameString);
+        editor.commit();
 
     }
 
