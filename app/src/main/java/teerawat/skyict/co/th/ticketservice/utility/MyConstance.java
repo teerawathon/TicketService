@@ -3,6 +3,7 @@ package teerawat.skyict.co.th.ticketservice.utility;
 import teerawat.skyict.co.th.ticketservice.R;
 
 public class MyConstance {
+    private String[] titleTabLayout = new String[]{"NewItem","Active","Critical","Last"};
 
     private String urlGetAllUser = "https://android.skyict.co.th/getAllUserWat.php";
 
@@ -18,6 +19,10 @@ public class MyConstance {
             R.drawable.ic_action_report,
             R.drawable.ic_action_about
     };
+
+    public String[] getTitleTabLayout() {
+        return titleTabLayout;
+    }
 
     public String[] getTitleListStrings() {
         return titleListStrings;
