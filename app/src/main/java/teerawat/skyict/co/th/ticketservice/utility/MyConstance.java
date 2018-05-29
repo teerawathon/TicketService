@@ -4,7 +4,13 @@ import teerawat.skyict.co.th.ticketservice.R;
 
 public class MyConstance {
 
+    private String urlGetAllUser = "https://android.skyict.co.th/getAllUserWat.php";
+
     private String[] titleListStrings = new String[]{"Ticket", "New Ticket", "Report", "About"};
+
+    public String getUrlGetAllUser() {
+        return urlGetAllUser;
+    }
 
     private int[] iconInts = new int[]{
             R.drawable.ic_action_ticket,
@@ -20,4 +26,5 @@ public class MyConstance {
     public int[] getIconInts() {
         return iconInts;
     }
+
 }
