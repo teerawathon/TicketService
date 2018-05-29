@@ -1,5 +1,6 @@
 package teerawat.skyict.co.th.ticketservice.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -21,6 +22,7 @@ import org.json.JSONObject;
 
 import teerawat.skyict.co.th.ticketservice.MainActivity;
 import teerawat.skyict.co.th.ticketservice.R;
+import teerawat.skyict.co.th.ticketservice.ServiceActivity;
 import teerawat.skyict.co.th.ticketservice.utility.MyAlertDialog;
 import teerawat.skyict.co.th.ticketservice.utility.ReadAllData;
 
@@ -63,7 +65,7 @@ public class MainFragment extends Fragment {
                     try {
 
                         boolean userBool = true;
-                        String truePasswordString = null, nameString = null, idString;
+                        String truePasswordString = null, nameString = null, idString = null;
 
                         String urlJSON = "http://androidthai.in.th/gate/getAllUserWat.php";
                         ReadAllData readAllData = new ReadAllData(getActivity());
@@ -94,8 +96,15 @@ public class MainFragment extends Fragment {
                             myAlertDialog.normalDialog("User Fail",
                                     "No This User in my Database");
                         } else if (passwordString.equals(truePasswordString)) {
+//                            Login Pass
                             Toast.makeText(getActivity(),"Welcome "+nameString,
                                     Toast.LENGTH_SHORT).show();
+
+//                            Intent to Service Activity
+                            intentToService(nameString, idString);
+
+
+
                         } else {
                             myAlertDialog.normalDialog("Password Fail",
                                     "Please Try Again Password False");
@@ -111,6 +120,14 @@ public class MainFragment extends Fragment {
             } // onClick
         });
 
+    }
+
+    private void intentToService(String nameString, String idString) {
+        Intent intent = new Intent(getActivity(), ServiceActivity.class);
+        intent.putExtra("id", idString);
+        intent.putExtra("name", nameString);
+        startActivity(intent);
+        getActivity().finish();
     }
 
     @Override
