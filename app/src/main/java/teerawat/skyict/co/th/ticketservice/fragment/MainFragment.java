@@ -89,7 +89,7 @@ public class MainFragment extends Fragment {
                         boolean userBool = true;
                         String truePasswordString = null, nameString = null, idString = null;
 
-                        String urlJSON = "https://android.skyict.co.th/getAllUserWat.php";
+                        String urlJSON = "http://androidthai.in.th/gate/getAllUserWat.php";
                         ReadAllData readAllData = new ReadAllData(getActivity());
                         readAllData.execute(urlJSON);
                         MyAlertDialog myAlertDialog = new MyAlertDialog(getActivity());
