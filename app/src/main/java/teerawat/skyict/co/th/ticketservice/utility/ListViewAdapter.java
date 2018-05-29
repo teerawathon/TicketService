@@ -44,7 +44,7 @@ public class ListViewAdapter extends BaseAdapter {
         View view = layoutInflater.inflate(R.layout.listview_drawer, parent, false);
 
         ImageView imageView = view.findViewById(R.id.imvIcon);
-        imageView.setImageResource(position);
+        imageView.setImageResource(ints[position]);
 
         TextView textView = view.findViewById(R.id.txtTitle);
         textView.setText(strings[position]);

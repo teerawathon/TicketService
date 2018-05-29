@@ -50,7 +50,7 @@ public class ServiceActivity extends AppCompatActivity {
         int[] IconInts = myConstance.getIconInts();
         ListViewAdapter listViewAdapter = new ListViewAdapter(ServiceActivity.this,
                 titlestrings, IconInts);
-       // listView.setAdapter(listViewAdapter);
+        listView.setAdapter(listViewAdapter);
 
     }
 

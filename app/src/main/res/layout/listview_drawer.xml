@@ -15,7 +15,6 @@
     <!--Title-->
     <TextView
         android:id="@+id/txtTitle"
-        android:textStyle="bold"
         android:layout_marginLeft="5dp"
         android:layout_gravity="center_vertical"
         android:textSize="24sp"
