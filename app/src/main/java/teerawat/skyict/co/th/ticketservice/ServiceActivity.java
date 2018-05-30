@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import teerawat.skyict.co.th.ticketservice.fragment.AddNewTicketFragment;
 import teerawat.skyict.co.th.ticketservice.fragment.BaseTicketFragment;
 import teerawat.skyict.co.th.ticketservice.utility.ListViewAdapter;
 import teerawat.skyict.co.th.ticketservice.utility.MyConstance;
@@ -67,9 +68,32 @@ public class ServiceActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
                 drawerLayout.closeDrawers();
+                replaceToFragment(position);
             }
         });
+
+    }
+
+    private void replaceToFragment(int position) {
+
+        switch (position) {
+            case 0:
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.contentMainFragment,
+                                BaseTicketFragment.baseTicketInstance(idString,nameUserString))
+                        .commit();
+                break;
+            case 1:
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.contentServiceFragment,
+                                AddNewTicketFragment.addNewTicketInstance(idString, nameUserString))
+                        .commit();
+        }
+
 
     }
 
@@ -143,8 +167,6 @@ public class ServiceActivity extends AppCompatActivity {
         drawerLayout.setDrawerListener(actionBarDrawerToggle);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-
 
 
 
