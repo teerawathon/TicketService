@@ -12,8 +12,9 @@ import android.view.ViewGroup;
 
 import teerawat.skyict.co.th.ticketservice.R;
 import teerawat.skyict.co.th.ticketservice.utility.MyConstance;
+import teerawat.skyict.co.th.ticketservice.utility.TicketViewPagerAdapter;
 
-public class BaseTicketFragment extends Fragment{
+public class BaseTicketFragment extends Fragment {
 
     private String idString, nameString;
     private TabLayout tabLayout;
@@ -24,8 +25,8 @@ public class BaseTicketFragment extends Fragment{
 
         BaseTicketFragment baseTicketFragment = new BaseTicketFragment();
         Bundle bundle = new Bundle();
-        bundle.putString("id",idString);
-        bundle.putString("Name",nameString);
+        bundle.putString("id", idString);
+        bundle.putString("Name", nameString);
         baseTicketFragment.setArguments(bundle);
 
         return baseTicketFragment;
@@ -41,14 +42,42 @@ public class BaseTicketFragment extends Fragment{
 //        Create TabLayout
         createTabLayout();
 
+//        Create ViewPager
+        createViewPager();
 
     }//Main medthod
+
+    private void createViewPager() {
+        viewPager = getView().findViewById(R.id.viewPagerTicket);
+        TicketViewPagerAdapter ticketViewPagerAdapter = new TicketViewPagerAdapter(
+                getActivity().getSupportFragmentManager(), tabLayout.getTabCount());
+        viewPager.setAdapter(ticketViewPagerAdapter);
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+
+
+    }
 
     private void createTabLayout() {
         MyConstance myConstance = new MyConstance();
         String[] strings = myConstance.getTitleTabLayout();
         tabLayout = getView().findViewById(R.id.tabLayoutTicket);
-        for (int i=0; i < strings.length; i+=1) {
+        for (int i = 0; i < strings.length; i += 1) {
             tabLayout.addTab(tabLayout.newTab().setText(strings[i]));
         } //for
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
