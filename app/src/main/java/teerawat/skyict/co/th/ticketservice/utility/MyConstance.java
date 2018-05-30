@@ -3,6 +3,12 @@ package teerawat.skyict.co.th.ticketservice.utility;
 import teerawat.skyict.co.th.ticketservice.R;
 
 public class MyConstance {
+
+    private String urlNewItemString = "https://android.skyict.co.th/getNewTicket.php";
+    private String urlActiveString = "https://android.skyict.co.th/getPendingTicket.php";
+    private String urlCriticalString = "https://android.skyict.co.th/getCriticalTicket.php";
+    private String urlLastString = "https://android.skyict.co.th/getClosedLastTicket.php";
+
     private String[] titleTabLayout = new String[]{"NewItem","Active","Critical","Last"};
 
     private String urlGetAllUser = "https://android.skyict.co.th/getAllUserWat.php";
@@ -19,6 +25,22 @@ public class MyConstance {
             R.drawable.ic_action_report,
             R.drawable.ic_action_about
     };
+
+    public String getUrlNewItemString() {
+        return urlNewItemString;
+    }
+
+    public String getUrlActiveString() {
+        return urlActiveString;
+    }
+
+    public String getUrlCriticalString() {
+        return urlCriticalString;
+    }
+
+    public String getUrlLastString() {
+        return urlLastString;
+    }
 
     public String[] getTitleTabLayout() {
         return titleTabLayout;

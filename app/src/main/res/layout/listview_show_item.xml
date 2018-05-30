@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="8dp"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--First-->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!--DocNO-->
+        <LinearLayout
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+
+            <!--Title-->
+            <TextView
+                android:textStyle="bold"
+                android:textSize="@dimen/h1"
+                android:text="DocNo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <!--Value-->
+            <TextView
+                android:id="@+id/txtDocNo"
+                android:textSize="@dimen/h2"
+                android:text="TK61050001"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+        </LinearLayout>
+
+        <!--Serial-->
+        <LinearLayout
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+
+            <!--Title-->
+            <TextView
+                android:textStyle="bold"
+                android:textSize="@dimen/h1"
+                android:text="S/N"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <!--Value-->
+            <TextView
+                android:id="@+id/txtSerial"
+                android:textSize="@dimen/h2"
+                android:text="TK61050001"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <!--DueDate-->
+        <LinearLayout
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+
+            <!--Title-->
+            <TextView
+                android:textStyle="bold"
+                android:textSize="@dimen/h1"
+                android:text="DueDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <!--Value-->
+            <TextView
+                android:id="@+id/txtDueDate"
+                android:textSize="@dimen/h2"
+                android:text="30/05/2018"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+    <!--Second-->
+    <LinearLayout
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!--Title-->
+        <TextView
+            android:textStyle="bold"
+            android:textSize="@dimen/h1"
+            android:text="Detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <!--Value-->
+        <TextView
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:id="@+id/txtDetail"
+            android:textSize="@dimen/h2"
+            android:text="TK61050001"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <!--Third-->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!--DocNO-->
+        <LinearLayout
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+
+            <!--Title-->
+            <TextView
+                android:textStyle="bold"
+                android:textSize="@dimen/h1"
+                android:text="ServarityID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <!--Value-->
+            <TextView
+                android:id="@+id/txtServarily"
+                android:textSize="@dimen/h2"
+                android:text="TK61050001"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+        </LinearLayout>
+
+        <!--Serial-->
+        <LinearLayout
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+
+            <!--Title-->
+            <TextView
+                android:textStyle="bold"
+                android:textSize="@dimen/h1"
+                android:text="Assignee"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <!--Value-->
+            <TextView
+                android:id="@+id/txtAssignee"
+                android:textSize="@dimen/h2"
+                android:text="TK61050001"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <!--DueDate-->
+        <LinearLayout
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+
+            <!--Title-->
+            <TextView
+                android:textStyle="bold"
+                android:textSize="@dimen/h1"
+                android:text="StatusID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <!--Value-->
+            <TextView
+                android:id="@+id/txtStatus"
+                android:textSize="@dimen/h2"
+                android:text="30/05/2018"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
