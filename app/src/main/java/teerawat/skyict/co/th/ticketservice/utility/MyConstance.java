@@ -4,6 +4,8 @@ import teerawat.skyict.co.th.ticketservice.R;
 
 public class MyConstance {
 
+    private String urlPostTicketRequest = "https://android.skyict.co.th/addTicketRequest.php";
+
     private String urlAssignString = "https://android.skyict.co.th/getAssign.php";
     private String urlSeverityString = "https://android.skyict.co.th/getSeverity.php";
 
@@ -14,7 +16,7 @@ public class MyConstance {
 
     private String[] titleTabLayout = new String[]{"NewItem","Active","Critical","Last"};
 
-    private String urlGetAllUser = "https://android.skyict.co.th/getAllUserWat.php";
+    private String urlGetAllUser = "https://android.skyict.co.th/getAllUserKet.php";
 
     private String[] titleListStrings = new String[]{"Ticket", "New Ticket", "Report", "About"};
 
@@ -28,6 +30,10 @@ public class MyConstance {
             R.drawable.ic_action_report,
             R.drawable.ic_action_about
     };
+
+    public String getUrlPostTicketRequest() {
+        return urlPostTicketRequest;
+    }
 
     public String getUrlAssignString() {
         return urlAssignString;
