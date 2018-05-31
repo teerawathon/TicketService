@@ -54,6 +54,11 @@ public class ServiceActivity extends AppCompatActivity {
 
     } //Main method
 
+    @Override
+    public void onBackPressed() {
+//        super.onBackPressed();
+    }
+
     private void createListView() {
 
         ListView listView = findViewById(R.id.myListview);
@@ -92,6 +97,7 @@ public class ServiceActivity extends AppCompatActivity {
                         .replace(R.id.contentServiceFragment,
                                 AddNewTicketFragment.addNewTicketInstance(idString, nameUserString))
                         .commit();
+                break;
         }
 
 
