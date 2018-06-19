@@ -16,7 +16,8 @@ public class MyConstance {
 
     private String[] titleTabLayout = new String[]{"NewItem","Active","Critical","Last"};
 
-    private String urlGetAllUser = "https://android.skyict.co.th/getAllUserKet.php";
+    private String urlGetAllUser = "/getAllUserKet.php";
+    private String urlGetDataUser = "/ldap.php";
 
     private String[] titleListStrings = new String[]{"Ticket", "New Ticket", "Report", "About"};
 
@@ -30,6 +31,10 @@ public class MyConstance {
             R.drawable.ic_action_report,
             R.drawable.ic_action_about
     };
+
+    public String getUrlGetDataUser() {
+        return urlGetDataUser;
+    }
 
     public String getUrlPostTicketRequest() {
         return urlPostTicketRequest;

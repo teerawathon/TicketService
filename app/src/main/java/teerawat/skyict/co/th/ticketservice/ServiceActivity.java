@@ -87,7 +87,7 @@ public class ServiceActivity extends AppCompatActivity {
             case 0:
                 getSupportFragmentManager()
                         .beginTransaction()
-                        .replace(R.id.contentMainFragment,
+                        .replace(R.id.contentServiceFragment,
                                 BaseTicketFragment.baseTicketInstance(idString,nameUserString))
                         .commit();
                 break;
@@ -131,6 +131,7 @@ public class ServiceActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("SkyUser",MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("id", "");
+        editor.putString("chkRemember", "");
         editor.commit();
 
 //        Back To Login

@@ -39,6 +39,7 @@
 
             <!--TextField-->
             <EditText
+                android:id="@+id/edtIPServer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="IP Server"
@@ -48,6 +49,7 @@
 
         <!--Submit-->
         <Button
+            android:id="@+id/btnSaveConfigIP"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Save" />

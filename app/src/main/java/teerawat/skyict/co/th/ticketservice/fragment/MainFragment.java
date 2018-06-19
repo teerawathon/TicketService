@@ -29,6 +29,7 @@ import teerawat.skyict.co.th.ticketservice.ServiceActivity;
 import teerawat.skyict.co.th.ticketservice.utility.MyAlertDialog;
 import teerawat.skyict.co.th.ticketservice.utility.MyConstance;
 import teerawat.skyict.co.th.ticketservice.utility.ReadAllData;
+import teerawat.skyict.co.th.ticketservice.utility.ReadDataLogin;
 
 public class MainFragment extends Fragment {
 
@@ -52,11 +53,12 @@ public class MainFragment extends Fragment {
         try {
             SharedPreferences sharedPreferences = getActivity()
                     .getSharedPreferences("SkyUser", Context.MODE_PRIVATE);
-            String idString = sharedPreferences.getString("id", "");
-            String nameString = sharedPreferences.getString("name", "");
+            //String idString = sharedPreferences.getString("id", "");
+            //String nameString = sharedPreferences.getString("name", "");
+            String chkRememberString = sharedPreferences.getString("chkRemember", "");
 
-            if (idString.length() != 0) {
-                intentToService(nameString, idString);
+            if (chkRememberString.equals("true")) {
+                intentToService("teerawat", "5");
             }
 
         } catch (Exception e) {
@@ -87,12 +89,16 @@ public class MainFragment extends Fragment {
 //                    No Space
                     try {
 
-                        MyConstance myConstance = new MyConstance();
+                        /*MyConstance myConstance = new MyConstance();
 
                         boolean userBool = true;
                         String truePasswordString = null, nameString = null, idString = null;
 
-                        String urlJSON = myConstance.getUrlGetAllUser();
+                        SharedPreferences sharedPreferences = getActivity()
+                                .getSharedPreferences("SkyUser", Context.MODE_PRIVATE);
+                        String ipServerString = sharedPreferences.getString("server", "");
+
+                        String urlJSON = ipServerString+myConstance.getUrlGetAllUser();
 
                         ReadAllData readAllData = new ReadAllData(getActivity());
                         readAllData.execute(urlJSON);
@@ -142,7 +148,55 @@ public class MainFragment extends Fragment {
                         } else {
                             myAlertDialog.normalDialog("Password Fail",
                                     "Please Try Again Password False");
-                        }
+                        }*/
+                        String rememberString = "false";
+
+                        MyAlertDialog myAlertDialog = new MyAlertDialog(getActivity());
+
+                        SharedPreferences sharedPreferences = getActivity()
+                                .getSharedPreferences("SkyUser", Context.MODE_PRIVATE);
+                        String ipServerString = sharedPreferences.getString("server", "");
+
+                        MyConstance myConstance = new MyConstance();
+                        String urlJSON = ipServerString + myConstance.getUrlGetDataUser();
+                        //String urlJSON = ipServerString + myConstance.getUrlGetAllUser();
+
+                        ReadDataLogin readDataLogin = new ReadDataLogin(getActivity());
+                        readDataLogin.execute(userString,passwordString,urlJSON);
+
+                        String resultJSON = readDataLogin.get();
+                        Log.d("19JunV1", "JSON ==>" + resultJSON);
+
+                        JSONObject jsonObject = new JSONObject(resultJSON);
+
+                            String statusString = jsonObject.getString("status");
+                            Log.d("19JunV2", " StatusString ==>" + statusString);
+
+                            if (statusString.equals("pass")) {
+
+                                String displayName = jsonObject.getString("display");
+                                Toast.makeText(getActivity(),"Welcome "+displayName,
+                                        Toast.LENGTH_SHORT).show();
+
+                                // Check Remember
+                                CheckBox checkBox = getView().findViewById(R.id.chbRemember);
+                                if (checkBox.isChecked()) {
+
+                                    rememberString = "true";
+                                    saveRemember(rememberString);
+
+                                }
+
+                                // Intent to Service Activity
+                                // "id":"5","User":"teerawat","Password":"123456","Name":"Teerawat"
+                                intentToService("teerawat", "5");
+
+                            } else {
+
+                                myAlertDialog.normalDialog("Username/Password Incorrect.",
+                                        "Please Try Fill Username or Password Again.");
+
+                            }
 
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -163,6 +217,18 @@ public class MainFragment extends Fragment {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("id", idString);
         editor.putString("name", nameString);
+
+        editor.commit();
+
+    }
+
+    private void saveRemember(String rememberString) {
+
+        SharedPreferences sharedPreferences = getActivity()
+                .getSharedPreferences("SkyUser", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("chkRemember", rememberString);
+
         editor.commit();
 
     }
