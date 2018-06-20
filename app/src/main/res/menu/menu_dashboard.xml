@@ -5,8 +5,8 @@
     <item
         app:showAsAction="always"
         android:icon="@drawable/ic_action_sign_out"
-        android:id="@+id/itemBackToDash"
-        android:title="Back To Dashboard" />
+        android:id="@+id/itemSignOut"
+        android:title="Sign Out" />
 
 
 </menu>

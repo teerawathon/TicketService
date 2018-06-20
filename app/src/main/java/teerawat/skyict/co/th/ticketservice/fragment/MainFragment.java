@@ -24,6 +24,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import teerawat.skyict.co.th.ticketservice.MainActivity;
+import teerawat.skyict.co.th.ticketservice.MenuActivity;
 import teerawat.skyict.co.th.ticketservice.R;
 import teerawat.skyict.co.th.ticketservice.ServiceActivity;
 import teerawat.skyict.co.th.ticketservice.utility.MyAlertDialog;
@@ -47,7 +48,7 @@ public class MainFragment extends Fragment {
         submitController();
 
 
-    } //Main Medthod
+    } //Main Method
 
     private void checkSharePrefer() {
         try {
@@ -58,12 +59,24 @@ public class MainFragment extends Fragment {
             String chkRememberString = sharedPreferences.getString("chkRemember", "");
 
             if (chkRememberString.equals("true")) {
-                intentToService("teerawat", "5");
+
+                //intentToService("teerawat", "5");
+                intentToMenu("teerawat", "5");
             }
 
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private void intentToMenu(String idString, String nameString) {
+
+        Intent intent = new Intent(getActivity(), MenuActivity.class);
+        intent.putExtra("id", idString);
+        intent.putExtra("name", nameString);
+        startActivity(intent);
+        getActivity().finish();
+
     }
 
     private void submitController() {
@@ -189,7 +202,9 @@ public class MainFragment extends Fragment {
 
                                 // Intent to Service Activity
                                 // "id":"5","User":"teerawat","Password":"123456","Name":"Teerawat"
-                                intentToService("teerawat", "5");
+                                //intentToService("teerawat", "5");
+
+                                intentToMenu("teerawat", "5");
 
                             } else {
 

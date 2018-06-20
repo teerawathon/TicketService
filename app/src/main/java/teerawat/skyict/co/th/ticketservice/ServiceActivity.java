@@ -1,7 +1,6 @@
 package teerawat.skyict.co.th.ticketservice;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
@@ -119,23 +118,18 @@ public class ServiceActivity extends AppCompatActivity {
         }
 
 //        For SignOut
-        if (item.getItemId() == R.id.itemSignOut) {
-            signOut();
+        if (item.getItemId() == R.id.itemBackToDash) {
+            backToDashboard();
         }
 
 
         return super.onOptionsItemSelected(item);
     }
 
-    private void signOut() {
-        SharedPreferences sharedPreferences = getSharedPreferences("SkyUser",MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("id", "");
-        editor.putString("chkRemember", "");
-        editor.commit();
+    private void backToDashboard() {
 
 //        Back To Login
-        startActivity(new Intent(ServiceActivity.this, MainActivity.class));
+        startActivity(new Intent(ServiceActivity.this, MenuActivity.class));
 
 //        Close App
         finish();
