@@ -34,6 +34,9 @@ import teerawat.skyict.co.th.ticketservice.utility.ReadDataLogin;
 
 public class MainFragment extends Fragment {
 
+    private String displayNameString, userString;
+    private String rememberString = "false";
+
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -60,8 +63,7 @@ public class MainFragment extends Fragment {
 
             if (chkRememberString.equals("true")) {
 
-                //intentToService("teerawat", "5");
-                intentToMenu("teerawat", "5");
+                intentToMenu(userString, displayNameString);
             }
 
         } catch (Exception e) {
@@ -69,11 +71,11 @@ public class MainFragment extends Fragment {
         }
     }
 
-    private void intentToMenu(String idString, String nameString) {
+    private void intentToMenu(String usernameString, String displayNameString) {
 
         Intent intent = new Intent(getActivity(), MenuActivity.class);
-        intent.putExtra("id", idString);
-        intent.putExtra("name", nameString);
+        intent.putExtra("username", usernameString);
+        intent.putExtra("display", displayNameString);
         startActivity(intent);
         getActivity().finish();
 
@@ -88,7 +90,7 @@ public class MainFragment extends Fragment {
                 EditText userEditText = getView().findViewById(R.id.edtUser);
                 EditText passwordEditText = getView().findViewById(R.id.edtPassword);
 
-                String userString = userEditText.getText().toString().trim();
+                userString = userEditText.getText().toString().trim();
                 String passwordString = passwordEditText.getText().toString().trim();
 
 //                Check Space
@@ -101,68 +103,6 @@ public class MainFragment extends Fragment {
                 } else {
 //                    No Space
                     try {
-
-                        /*MyConstance myConstance = new MyConstance();
-
-                        boolean userBool = true;
-                        String truePasswordString = null, nameString = null, idString = null;
-
-                        SharedPreferences sharedPreferences = getActivity()
-                                .getSharedPreferences("SkyUser", Context.MODE_PRIVATE);
-                        String ipServerString = sharedPreferences.getString("server", "");
-
-                        String urlJSON = ipServerString+myConstance.getUrlGetAllUser();
-
-                        ReadAllData readAllData = new ReadAllData(getActivity());
-                        readAllData.execute(urlJSON);
-                        MyAlertDialog myAlertDialog = new MyAlertDialog(getActivity());
-
-                        String resultJSON = readAllData.get();
-                        Log.d("28MayV1", "JSON ==>" + resultJSON);
-
-                        JSONArray jsonArray = new JSONArray(resultJSON);
-                        for (int i=0; i<jsonArray.length(); i++) {
-
-                            JSONObject jsonObject = jsonArray.getJSONObject(i);
-
-                            if (userString.equals(jsonObject.getString("User"))) {
-
-                                userBool = false;
-                                truePasswordString = jsonObject.getString("Password");
-                                nameString = jsonObject.getString("Name");
-                                idString = jsonObject.getString("id");
-
-                            }
-
-                        } // for loop
-
-                        if (userBool) {
-//                            User Fail
-                            myAlertDialog.normalDialog("User Fail",
-                                    "No This User in my Database");
-                        } else if (passwordString.equals(truePasswordString)) {
-//                            Login Pass
-                            Toast.makeText(getActivity(),"Welcome "+nameString,
-                                    Toast.LENGTH_SHORT).show();
-
-//                            Check Remember
-                            CheckBox checkBox = getView().findViewById(R.id.chbRemember);
-                            if (checkBox.isChecked()) {
-
-                                saveIdAndName(idString, nameString);
-
-                            }
-
-//                            Intent to Service Activity
-                            intentToService(nameString, idString);
-
-
-
-                        } else {
-                            myAlertDialog.normalDialog("Password Fail",
-                                    "Please Try Again Password False");
-                        }*/
-                        String rememberString = "false";
 
                         MyAlertDialog myAlertDialog = new MyAlertDialog(getActivity());
 
@@ -187,8 +127,8 @@ public class MainFragment extends Fragment {
 
                             if (statusString.equals("pass")) {
 
-                                String displayName = jsonObject.getString("display");
-                                Toast.makeText(getActivity(),"Welcome "+displayName,
+                                displayNameString = jsonObject.getString("display");
+                                Toast.makeText(getActivity(),"Welcome "+displayNameString,
                                         Toast.LENGTH_SHORT).show();
 
                                 // Check Remember
@@ -196,15 +136,12 @@ public class MainFragment extends Fragment {
                                 if (checkBox.isChecked()) {
 
                                     rememberString = "true";
-                                    saveRemember(rememberString);
+                                    savePreference(rememberString,userString,displayNameString);
 
                                 }
 
-                                // Intent to Service Activity
-                                // "id":"5","User":"teerawat","Password":"123456","Name":"Teerawat"
-                                //intentToService("teerawat", "5");
-
-                                intentToMenu("teerawat", "5");
+                                // Intent to Menu Activity
+                                intentToMenu(userString, displayNameString);
 
                             } else {
 
@@ -237,7 +174,7 @@ public class MainFragment extends Fragment {
 
     }
 
-    private void saveRemember(String rememberString) {
+    private void savePreference(String rememberString, String usernameString, String displayString) {
 
         SharedPreferences sharedPreferences = getActivity()
                 .getSharedPreferences("SkyUser", Context.MODE_PRIVATE);

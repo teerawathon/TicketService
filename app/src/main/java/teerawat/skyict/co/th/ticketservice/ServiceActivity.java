@@ -128,7 +128,7 @@ public class ServiceActivity extends AppCompatActivity {
 
     private void backToDashboard() {
 
-//        Back To Login
+//        Back To Menu
         startActivity(new Intent(ServiceActivity.this, MenuActivity.class));
 
 //        Close App

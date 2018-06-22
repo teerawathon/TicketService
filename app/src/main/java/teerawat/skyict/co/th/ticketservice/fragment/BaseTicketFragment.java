@@ -20,7 +20,6 @@ public class BaseTicketFragment extends Fragment {
     private TabLayout tabLayout;
     private ViewPager viewPager;
 
-
     public static BaseTicketFragment baseTicketInstance(String idString, String nameString) {
 
         BaseTicketFragment baseTicketFragment = new BaseTicketFragment();

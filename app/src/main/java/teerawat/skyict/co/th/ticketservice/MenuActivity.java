@@ -15,10 +15,15 @@ import teerawat.skyict.co.th.ticketservice.utility.ConfirmDialog;
 
 public class MenuActivity extends AppCompatActivity {
 
+    private String displayNameString, userString;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
+
+        //        GetValue FromIntent
+        getValueFromIntent();
 
         //        Create Toolbar
         createToolbar();
@@ -96,9 +101,13 @@ public class MenuActivity extends AppCompatActivity {
 
 //        Setup Title
         getSupportActionBar().setTitle("Dash Board");
-
-
+        getSupportActionBar().setSubtitle(displayNameString+" Login");
 
     }
 
-}
+    private void getValueFromIntent() {
+        userString = getIntent().getStringExtra("username");
+        displayNameString = getIntent().getStringExtra("display");
+    }
+
+} //Main Class

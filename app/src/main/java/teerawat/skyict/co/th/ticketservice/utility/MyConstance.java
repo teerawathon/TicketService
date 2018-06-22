@@ -14,6 +14,8 @@ public class MyConstance {
     private String urlCriticalString = "https://android.skyict.co.th/getCriticalTicket.php";
     private String urlLastString = "https://android.skyict.co.th/getClosedLastTicket.php";
 
+    private String urlContactString = "https://android.skyict.co.th/getContact.php";
+
     private String[] titleTabLayout = new String[]{"NewItem","Active","Critical","Last"};
 
     private String urlGetAllUser = "/getAllUserKet.php";
@@ -31,6 +33,10 @@ public class MyConstance {
             R.drawable.ic_action_report,
             R.drawable.ic_action_about
     };
+
+    public String getUrlContactString() {
+        return urlContactString;
+    }
 
     public String getUrlGetDataUser() {
         return urlGetDataUser;
